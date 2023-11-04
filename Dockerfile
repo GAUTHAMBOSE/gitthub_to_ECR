@@ -26,8 +26,25 @@
 
 
 # ######################################
- FROM httpd
- COPY . /usr/local/apache2/htdocs/
+#  FROM httpd
+#  COPY . /usr/local/apache2/htdocs/
+
+
+#################################################### 
+# Use the official Apache HTTP Server image as the base image
+FROM httpd:2.4
+
+# Copy your HTML/website files to the default Apache document root
+COPY ./my-website /usr/local/apache2/htdocs/
+
+# Optionally, you can customize the Apache configuration
+# For example, to enable .htaccess files, you can add the following lines:
+# RUN echo "AllowOverride All" >> /usr/local/apache2/conf/httpd.conf
+# Note: Enabling .htaccess files should be done with caution for security reasons.
+
+# Expose port 80 for web traffic
+EXPOSE 80
+
 
 
 
