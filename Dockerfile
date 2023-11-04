@@ -32,10 +32,10 @@
 
 #################################################### 
 # Use the official Apache HTTP Server image as the base image
-FROM httpd:2.4
+# FROM httpd:2.4
 
-# Copy your HTML/website files to the default Apache document root
-COPY ./my-website /usr/local/apache2/htdocs/
+# # Copy your HTML/website files to the default Apache document root
+# COPY ./my-website /usr/local/apache2/htdocs/
 
 # Optionally, you can customize the Apache configuration
 # For example, to enable .htaccess files, you can add the following lines:
@@ -43,11 +43,15 @@ COPY ./my-website /usr/local/apache2/htdocs/
 # Note: Enabling .htaccess files should be done with caution for security reasons.
 
 # Expose port 80 for web traffic
-EXPOSE 80
+# EXPOSE 80
 
+##############################################################
 
+FROM alpine:3.8
 
+RUN apk update
 
+RUN apk add nodejs
 
 ############
 # https://github.com/javahometech/node-app
